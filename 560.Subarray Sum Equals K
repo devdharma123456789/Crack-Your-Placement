@@ -1,0 +1,26 @@
+class Solution {
+public:
+    int subarraySum(vector<int>& nums, int k) {
+        ios_base::sync_with_stdio(false);
+        cin.tie(NULL);
+        int n=nums.size();
+        if(n==0)
+            return 0;
+        unordered_map<int,int>mymap;
+        int sum=0;
+        int i=0;
+        int count=0;
+        while(i<n){
+            sum = sum+nums[i];
+            if(sum==k)
+                count += 1;
+            if(mymap.find(sum-k)!=mymap.end())
+                count=count+mymap[sum-k];
+            mymap[sum] +=1;
+            i+=1;
+                
+        }
+        return count;
+        
+    }
+};
